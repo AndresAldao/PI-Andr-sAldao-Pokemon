@@ -1,9 +1,9 @@
 
-
 const axios = require('axios');
 const { Pokemon, Types } = require('../db');
 
 const getPokemonsDB = async function(pokemonName){
+    const array = [];
    if(pokemonName === undefined){
        const pokemons = await Pokemon.findAll(
           { 
@@ -15,7 +15,10 @@ const getPokemonsDB = async function(pokemonName){
                }
            }
        } );
-       return pokemons.map(p => p.dataValues);
+         pokemons.forEach(pokemon => {
+              array.push(pokemon.dataValues);
+         });
+       return array;
    }
    if(pokemonName){
 
@@ -34,22 +37,27 @@ const getPokemonsDB = async function(pokemonName){
          if(pokemon.length === 0){
              return null;
          }
+            pokemon.forEach(pokemon => {
+                array.push(pokemon.dataValues);
+            });
 
-       return pokemon.map(p => p.dataValues);
+       return array;
        } 
    }
 
 
 const getPokemonsapi = async function(pokemonName){
     if(pokemonName === undefined){
-        const allpokemon = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
+        const allpokemon = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=41');
         const allUrl = allpokemon.data.results.map(pokemon => pokemon.url);
         promises = await Promise.all(allUrl.map(url => axios.get(url))); 
         const pokemons = promises.map(pokemon => {
             return {
                 name: pokemon.data.name,
                 image: pokemon.data.sprites.other.dream_world.front_default,
-                types: pokemon.data.types.map(type => type.type.name)
+                types: pokemon.data.types.map(type => type.type.name),
+                attack: pokemon.data.stats[1].base_stat,
+                id: pokemon.data.id
             }
         }); 
         return pokemons;
@@ -60,7 +68,9 @@ const getPokemonsapi = async function(pokemonName){
             const pokemonData = {
                 name: pokemon.data.name,
                 image: pokemon.data.sprites.other.dream_world.front_default,
-                types: pokemon.data.types.map(type => type.type.name)
+                types: pokemon.data.types.map(type => type.type.name),
+                attack: pokemon.data.stats[1].base_stat,
+                id: pokemon.data.id
             }
             return pokemonData;
         } catch (error) {
@@ -151,14 +161,14 @@ module.exports = {
     },
     getPokemonsByID: async function(id){
         const pokemonapi = await getPokemonsByID(id);
-        console.log(pokemonapi,'pokemonapi');
+        /* console.log(pokemonapi,'pokemonapi'); */
         if (pokemonapi!== null){
             return pokemonapi;
         }
-        console.log("estoy");
+       /*  console.log("estoy"); */
         const pokemonDB = await getPokemonsDBbyID(id);
-        console.log("estoy2");
-        console.log(pokemonDB,'pokemonDB');
+       /*  console.log("estoy2");
+        console.log(pokemonDB,'pokemonDB'); */
         if(pokemonDB !== null){
             return pokemonDB;
         }

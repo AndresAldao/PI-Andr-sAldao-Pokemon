@@ -1,25 +1,30 @@
 import './App.css';
 import React from 'react';
-import Country from './components/country.jsx';
+import LandingPage from './components/LandingPage/LandingPage.jsx';
+import { Route } from "react-router-dom";
+import Home from './components/Home/Home.jsx';
+import CreatePokemon from './components/CreatePokemon/CreatePokemon';
+import PokemonDetails from './components/Details/Details';
 
-function  App(){
+
+
+function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Country/>
-      </header>
+    <div>
+      <Route exact path="/">
+        <LandingPage />
+      </Route>
+      <Route exact path="/home">
+        <Home />
+      </Route>
+      <Route exact path="/create">
+        <CreatePokemon />
+      </Route>
+      <Route exact path="/pokemon/:id">
+        <PokemonDetails/>
+      </Route>
+
     </div>
   );
 }
-
-
-/*   const {name} = country();
-  return (
-    <div className="App">
-      <p>{name}</p>
-      <h1>Henry Countries</h1>
-    </div>
-  );
-} */
-
 export default App;

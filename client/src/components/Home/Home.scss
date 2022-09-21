@@ -1,0 +1,22 @@
+.grid-card{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 1rem;
+    
+}
+
+.select-menu{
+    width: 300px;
+    cursor: pointer;
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    background-color: #ff5400;
+    padding: 10px;
+}
+
