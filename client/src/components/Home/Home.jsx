@@ -65,7 +65,6 @@ const Home = () => {
         setFilter(e.target.value);
 
         dispatch(filterPokemons(e.target.value));
-        /* dispatch(paginado([...pokemons].splice(0, 12))) */
         setDisplay("There are no pokemon of this type");
     };
     useEffect(() => {

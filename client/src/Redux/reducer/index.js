@@ -4,7 +4,7 @@ const initialState = {
     pokemons: [],
     details: [],
     pokemonsFiltered: [],
-    aux: 0,
+    aux: 0
   };
   
   const rootReducer = (state = initialState, action) => {

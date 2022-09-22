@@ -8,21 +8,19 @@ import React from 'react';
 
 
 const Paginado = ({pokemons}) => {
+    console.log(pokemons)
     const pokemonspage= useSelector(state => state.pokemons);
     const pokemons1= useSelector(state => state.pokemonsFiltered);
     const dispatch = useDispatch();
     const [items, setItems] = useState(pokemons1.length?[...pokemons1].slice(0, 12):[...pokemonspage].slice(0, 12));
     const [currentPage, setCurrentPage] = useState(0);
-
     let current = useSelector (state => state.aux);
-    
 
     
     useEffect(() => {
         dispatch(paginado(items))
-        
     }, [dispatch, items, currentPage]);
-
+    
     const nextPage = () => {
         const total = pokemonspage.length;
         const nextPage = current + 1;
