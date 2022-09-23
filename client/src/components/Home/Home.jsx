@@ -2,7 +2,7 @@ import Nav from "../Nav/Nav.jsx";
 import React from "react";
 import { useDispatch ,useSelector} from "react-redux";
 import { useEffect, useState} from "react";
-import { filterPokemons, filterPokemonsAPI, filterPokemonsDB, getPokemons, getTypes, paginado, sortPokemons } from "../../Redux/actions/index.js";
+import { filterPokemons, filterPokemonsAPI, filterPokemonsDB, getPokemons, getTypes, paginado, Refresh, sortPokemons } from "../../Redux/actions/index.js";
 import PokemonCard from "../PokemonCard/PokemonCard.js";
 import Paginado from "../Paginado/Paginado.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
@@ -15,7 +15,8 @@ const Home = () => {
     const dispatch = useDispatch();
     const [order, setOrder] = useState("asc");
     const [filter, setFilter] = useState("");
-    const [display, setDisplay] = useState("Loading...");
+    /* const [display, setDisplay] = useState("Loading..."); */
+    const display = useSelector(state => state.display);
     const pokemonspage= useSelector(state => state.pokemonsFiltered);
 
     
@@ -30,8 +31,9 @@ const Home = () => {
     const refrescar = (e) => {
         dispatch(getPokemons());
         setOrder(e);
-        setDisplay("Loading...");
+        /* setDisplay("Loading..."); */
         dispatch(paginado([...pokemons].splice(0, 12)));
+        dispatch(Refresh(e));
     };
 
     const ordenar = (e) => {
@@ -40,7 +42,7 @@ const Home = () => {
             setOrder(e.target.value);
             dispatch(sortPokemons(e.target.value))
             dispatch(paginado([...pokemons].slice(0, 12)));
-            display === "Loading..." ? setDisplay("Loading...") : setDisplay("Loading...");
+            /* display === "Loading..." ? setDisplay("Loading...") : setDisplay("Loading..."); */
         }
     }
 
@@ -48,7 +50,6 @@ const Home = () => {
         getPokemons();
         e.preventDefault();
         dispatch(filterPokemonsDB(e.target.value))
-        setDisplay("Pokemons not Found. Please Refresh pokemon list and try again")
     }
 
     
@@ -57,7 +58,6 @@ const Home = () => {
         getPokemons()
         e.preventDefault();
         dispatch(filterPokemonsAPI(e.target.value))
-        setDisplay("Pokemons not Found. Please Refresh pokemon list and try again")
         dispatch(paginado(pokemons.splice(0, 12)))
     }
     
@@ -65,13 +65,12 @@ const Home = () => {
         setFilter(e.target.value);
 
         dispatch(filterPokemons(e.target.value));
-        setDisplay("There are no pokemon of this type");
     };
     useEffect(() => {
     }, [order]);
 
     useEffect(() => {
-    }, [filter, order]);
+    }, [filter, order ]);
     
     return (
         <div
@@ -85,24 +84,24 @@ const Home = () => {
                 </div>
                 <div>
                     <SearchBar />
-                    <button onClick={PokemonsBD}>
+                    <button className="button1" onClick={PokemonsBD}>
                         Pokemons BD
                     </button>
-                    <button onClick={PokemonsApi}>
+                    <button className="button1" onClick={PokemonsApi}>
                         Pokemons API
                     </button>
-                    <button onClick={refrescar}>
+                    <button className="button2"  onClick={refrescar}>
                         Refresh Pokemons list
                     </button>
                     <select className="select-menu" onChange={ordenar}>
-                        <option>Sort By</option>
-                        <option className="option" value="A-Z">A-Z</option>
-                        <option className="option" value="Z-A">Z-A</option>
-                        <option className="option" value="attackpositive">Attack ↑</option>
-                        <option className="option" value="attacknegative">Attack ↓</option>
+                        <option className="select-menu-inner">Sort By</option>
+                        <option className="select-menu-inner" value="A-Z">A-Z</option>
+                        <option className="select-menu-inner" value="Z-A">Z-A</option>
+                        <option className="select-menu-inner" value="attackpositive">Attack ↑</option>
+                        <option className="select-menu-inner" value="attacknegative">Attack ↓</option>
                     </select>
-                    <select onChange={handleSelect}>
-                        <option>Filter by Type...</option>
+                    <select className="select-menu-1" onChange={handleSelect}>
+                        <option disabled selected>Filter by Type...</option>
                         {Types.map((t) => (
                             <option value={t.name}>{t.name}</option>
                         ))}

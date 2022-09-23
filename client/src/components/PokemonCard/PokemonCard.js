@@ -13,7 +13,7 @@ const PokemonCard = ({name , image, types, id}) => {
                         <img className="flip-card-front-image" src={image} alt={name} />
                     </div>
                         <div className="flip-card-back">
-                        <h3>{name}</h3>
+                        <h3>{name.toUpperCase()}</h3>
                         {   
                             types.map((type) => {
                                 return (

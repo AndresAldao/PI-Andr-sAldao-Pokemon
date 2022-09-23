@@ -11,7 +11,7 @@ const SearchBar = () => {
 
     const handleChange = (e) => {
         e.preventDefault();
-        setInput(e.target.value);
+        setInput(e.target.value.toLowerCase());
     };
 
     const handleSubmit = (e) => {

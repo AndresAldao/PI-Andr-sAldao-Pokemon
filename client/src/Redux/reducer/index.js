@@ -4,7 +4,9 @@ const initialState = {
     pokemons: [],
     details: [],
     pokemonsFiltered: [],
-    aux: 0
+    aux: 0,
+    pokemonsaux:[],
+    display: "Loading..."
   };
   
   const rootReducer = (state = initialState, action) => {
@@ -25,6 +27,9 @@ const initialState = {
         return {
           ...state,
           pokemons: action.payload,
+          pokemonsaux: action.payload,
+          aux: 0,
+          display: "Loading..."
         }
       }
       if (action.type === "SORT_POKEMONS") {
@@ -41,7 +46,8 @@ const initialState = {
               }
               return 0;
             }),
-            aux: 0
+            aux: 0,
+            pokemonsaux: state.pokemons
           }
         }
         if(action.payload === "Z-A") {
@@ -57,7 +63,8 @@ const initialState = {
               }
               return 0;
             }),
-            aux: 0
+            aux: 0,
+            pokemonsaux: state.pokemons
           }
         }
         if(action.payload === "attackpositive") {
@@ -73,7 +80,9 @@ const initialState = {
               }
               return 0;
             }),
-            aux: 0
+            aux: 0,
+            pokemonsaux: state.pokemons
+
           }
         }
         if(action.payload === "attacknegative") {
@@ -89,7 +98,8 @@ const initialState = {
               }
               return 0;
             }),
-            aux: 0
+            aux: 0,
+            pokemonsaux: state.pokemons
           }
         }
 
@@ -108,7 +118,10 @@ const initialState = {
         const pokemonsFilterdAPI = state.pokemons.filter(pokemon => pokemon.types.includes(action.payload))
         return {
           ...state,
-          pokemonsFiltered: pokemonsFilteredDB.concat(pokemonsFilterdAPI)
+          pokemonsFiltered: pokemonsFilteredDB.concat(pokemonsFilterdAPI),
+          pokemonsaux: pokemonsFilterdAPI.concat(pokemonsFilteredDB),
+          aux: 0,
+          display: "There are no pokemons of this type"
         }
       }
 
@@ -126,12 +139,16 @@ const initialState = {
         if(action.payload.length===0){
           return {
             ...state,
-            pokemonsFiltered: action.payload
+            pokemonsaux: action.payload,
+            pokemonsFiltered: action.payload,
+            aux :0,
+            display: "Pokemon not found, refresh pokemon list and try again" 
           }
         }
         return {
           ...state,
-          pokemonsFiltered: [action.payload]
+          pokemonsFiltered: [action.payload],
+          aux: 0
         }
       }
       if (action.type === "FILTER_BY_TYPE_DB") {
@@ -140,7 +157,10 @@ const initialState = {
         return {
           ...state,
           pokemons: pokemonsBD,
-          pokemonsFiltered: pokemonsBD
+          pokemonsFiltered: pokemonsBD,
+          aux: 0,
+          pokemonsaux: pokemonsBD,
+          display: "Pokemons not Found. Please Refresh pokemon list and try again"
         }
       }
       if(action.type==="FILTER_BY_TYPE_API") {
@@ -149,17 +169,13 @@ const initialState = {
         return {
           ...state,
           pokemons: pokemonsAPI,
-          pokemonsFiltered: pokemonsAPI
+          pokemonsFiltered: pokemonsAPI,
+          aux: 0,
+          pokemonsaux: pokemonsAPI,
+          display: "Pokemons not Found. Please Refresh pokemon list and try again"
         }
       }
 
-      if(action.type==="REFRESH") {
-        
-        return {
-          ...state,
-          pokemons: action.payload
-        }
-      }
 
       if (action.type==="CURRENT_PAGE"){
         return {
