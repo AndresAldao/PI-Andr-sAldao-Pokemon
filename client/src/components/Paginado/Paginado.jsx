@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CurrentPage, getPokemons, paginado } from '../../Redux/actions';
+import { CurrentPage, paginado } from '../../Redux/actions';
 import React from 'react';
 import "./Paginado.scss";
 
@@ -19,12 +19,12 @@ const Paginado = ({pokemons}) => {
         pokemonspage=pokemons1;
         dispatch(paginado([...pokemonspage].splice(0, 12)))
     }
-    console.log(pokemonspage)
-   /*  if(pokemonspage.length===0){ 
+  /*   console.log(pokemonspage)
+    if(pokemonspage.length===0){ 
         console.log("entro")
         dispatch(getPokemons())
-    } */
-
+    }
+ */
     useEffect(() => {
         dispatch(paginado(items))
     }, [dispatch, items, currentPage]);
@@ -61,8 +61,8 @@ const Paginado = ({pokemons}) => {
 
     return (
         <div>
-            <button className='btn1' onClick={prevPage}>Prev Page</button>
-            <button onClick={nextPage}>Next Page</button>
+            <button className='btn1 btn1--1' onClick={prevPage}>Prev Page</button>
+            <button className='btn2 btn2--2' onClick={nextPage}>Next Page</button>
         </div>
     )
 }

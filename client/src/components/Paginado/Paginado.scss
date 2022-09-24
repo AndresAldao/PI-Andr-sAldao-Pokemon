@@ -1,5 +1,60 @@
 .btn1{
     position: absolute;
-    top: 110%;
-    right: 52%;
+    top: 112%;
+    right: 50.2%;
+    text-transform: uppercase;
+    color: green;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    width: fit-content;
+    z-index: 0;
+    transition: all 1s ease;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.btn1--1{
+
+    height: 56px;
+    width: 165px;
+    display: grid;
+    place-items: center;
+
+    &:hover{
+        color: white;
+        background-color: green;
+    }
+}
+
+
+.btn2{
+    position: absolute;
+    top: 112%;
+    left: 50.2%;
+    text-transform: uppercase;
+    color: green;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    width: fit-content;
+    z-index: 0;
+    transition: all 1s ease;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.btn2--2{
+
+    height: 56px;
+    width: 165px;
+    display: grid;
+    place-items: center;
+
+    &:hover{
+        color: white;
+        background-color: green;
+    }
 }

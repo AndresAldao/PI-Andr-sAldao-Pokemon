@@ -15,7 +15,6 @@ const Home = () => {
     const dispatch = useDispatch();
     const [order, setOrder] = useState("asc");
     const [filter, setFilter] = useState("");
-    /* const [display, setDisplay] = useState("Loading..."); */
     const display = useSelector(state => state.display);
     const pokemonspage= useSelector(state => state.pokemonsFiltered);
 
@@ -31,7 +30,6 @@ const Home = () => {
     const refrescar = (e) => {
         dispatch(getPokemons());
         setOrder(e);
-        /* setDisplay("Loading..."); */
         dispatch(paginado([...pokemons].splice(0, 12)));
         dispatch(Refresh(e));
     };
@@ -42,7 +40,7 @@ const Home = () => {
             setOrder(e.target.value);
             dispatch(sortPokemons(e.target.value))
             dispatch(paginado([...pokemons].slice(0, 12)));
-            /* display === "Loading..." ? setDisplay("Loading...") : setDisplay("Loading..."); */
+            
         }
     }
 
@@ -58,7 +56,7 @@ const Home = () => {
         getPokemons()
         e.preventDefault();
         dispatch(filterPokemonsAPI(e.target.value))
-        dispatch(paginado(pokemons.splice(0, 12)))
+        /* dispatch(paginado(pokemons.splice(0, 12))) */
     }
     
     const handleSelect = (e) => {
@@ -73,24 +71,20 @@ const Home = () => {
     }, [filter, order ]);
     
     return (
-        <div
-        //https://wallpaperaccess.com/full/8094982.gif
-        style={{backgroundImage: "url(https://wallpaperaccess.com/full/8094982.gif)",
-        backgroundSize: "cover",
-        }}
-        >   <div>
+        <div className="principal">   
+            <div>
                 <div>
                     <Nav />
                 </div>
                 <div>
                     <SearchBar />
-                    <button className="button1" onClick={PokemonsBD}>
+                    <button className="button1 button1--1" onClick={PokemonsBD}>
                         Pokemons BD
                     </button>
-                    <button className="button1" onClick={PokemonsApi}>
+                    <button className="button3 button3--3" onClick={PokemonsApi}>
                         Pokemons API
                     </button>
-                    <button className="button2"  onClick={refrescar}>
+                    <button className="button2 button2--2"  onClick={refrescar}>
                         Refresh Pokemons list
                     </button>
                     <select className="select-menu" onChange={ordenar}>

@@ -2,7 +2,8 @@
   
     width: 320px;
     height: 320px;
-    background-color: #ff5400;
+    /* background-color: #ff5400; */
+    background-color: red;
     border-radius: 30px;
     perspective: 2000px;
 
@@ -23,6 +24,7 @@
         height: 100%;
         border-radius: 30px;  
         backface-visibility: hidden;
+        border: black solid 1px;
     }
 
     &-front{
@@ -42,9 +44,9 @@
         text-align: center;
         display: grid;
         place-items: center;
-        background-color: #bf0603;
+        background-color: white;
         transform: rotateY(180deg);
-        color: aliceblue;
+        color: red;
     }
     &:hover .flip-card-inner{
         transform: rotateY(-180deg);

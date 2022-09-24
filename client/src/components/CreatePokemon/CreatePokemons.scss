@@ -1,0 +1,94 @@
+
+.fondo{
+    //https://images3.alphacoders.com/648/648583.jpg
+    //https://fondosmil.com/fondo/14740.jpg
+    //https://fondosmil.com/fondo/14718.jpg
+    background-image: url(https://images3.alphacoders.com/648/648583.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 112vh;
+    width: 100vw;
+    display: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #29962A;
+}
+
+
+.btn{
+    border-radius: 5px;
+    display: block;
+    padding: 20px 15px;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    top: 95%;
+}
+
+.btn-green{
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+}
+
+.btn-green:hover{
+    background-color: #37B839;
+    border-color: #37B839;
+}
+
+.btn-green:active{
+    background-color: #29962A;
+    background-color: #29962A;
+}
+
+.form{
+    background-color: white;
+    color: #999;
+    margin: 0 auto;
+    width: 30%;
+    padding: 25px;
+    border-radius: 10px;
+    font-size: 1em;
+    justify-content: center;
+    text-align: center;
+}
+
+input{
+    border: 0;
+    outline: none;
+    width: 70%;
+}
+
+.inputs{
+    border: solid 1px #ccc;
+    padding: 10px;
+    width: 70%;
+}
+
+.inputs:focus{
+    border: solid 1px rgb(2, 1, 1);
+}
+
+.input-select{
+    border: solid 1px #ccc;
+    padding: 10px;
+    width: 75%;
+    left: 12%;
+}
+
+.center-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert{
+    background-color: #f2dede;
+    color: #a94442;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ebccd1;
+    border-radius: 5px;
+}

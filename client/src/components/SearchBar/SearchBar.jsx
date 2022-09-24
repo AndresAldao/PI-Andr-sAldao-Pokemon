@@ -32,7 +32,7 @@ const SearchBar = () => {
                 />
                 
                 <button className="search-bnt" value={input} onClick={(e) => handleSubmit(e)}>
-                    hola
+                    STH
                     {/* <GoSearch className="icon"/> */}</button>
             </div>
   );

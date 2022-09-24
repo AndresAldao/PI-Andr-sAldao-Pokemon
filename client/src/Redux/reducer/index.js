@@ -28,6 +28,7 @@ const initialState = {
           ...state,
           pokemons: action.payload,
           pokemonsaux: action.payload,
+          pokemonsFiltered: action.payload,
           aux: 0,
           display: "Loading..."
         }
@@ -148,7 +149,8 @@ const initialState = {
         return {
           ...state,
           pokemonsFiltered: [action.payload],
-          aux: 0
+          pokemonsaux: [action.payload],
+          aux :0,
         }
       }
       if (action.type === "FILTER_BY_TYPE_DB") {
