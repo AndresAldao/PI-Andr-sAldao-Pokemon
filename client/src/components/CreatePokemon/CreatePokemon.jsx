@@ -45,7 +45,7 @@ const CreatePokemon = () => {
         } else if (!input.img) {
           err.img = "Please enter an image url";
         }if (!input.types) {
-            err.types = "¡Please enter types!";
+          err.types = "¡Please enter types!";
         }
         setDisabled(false);
         return err;

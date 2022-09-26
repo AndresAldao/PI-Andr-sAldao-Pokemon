@@ -48,7 +48,15 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons
+            pokemonsaux: state.pokemons.sort((a, b) => {
+              if(a.name > b.name) {
+                return 1;
+              }
+              if(a.name < b.name) {
+                return -1;
+              }
+              return 0;
+            })
           }
         }
         if(action.payload === "Z-A") {
@@ -65,7 +73,15 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons
+            pokemonsaux: state.pokemons.sort((a, b) => {
+              if(a.name > b.name) {
+                return -1;
+              }
+              if(a.name < b.name) {
+                return 1;
+              }
+              return 0;
+            })
           }
         }
         if(action.payload === "attackpositive") {
@@ -82,7 +98,15 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons
+            pokemonsaux: state.pokemons.sort((a, b) => {
+              if(a.attack > b.attack) {
+                return -1;
+              }
+              if(a.attack < b.attack) {
+                return 1;
+              }
+              return 0;
+            })
 
           }
         }
@@ -100,7 +124,15 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons
+            pokemonsaux: state.pokemons.sort((a, b) => {
+              if(a.attack > b.attack) {
+                return 1;
+              }
+              if(a.attack < b.attack) {
+                return -1;
+              }
+              return 0;
+            })
           }
         }
 
@@ -127,7 +159,6 @@ const initialState = {
       }
 
       if(action.type==="PAGINADO") {
-       /*  console.log(action.payload, "paginado") */
         return {
           ...state,
           pokemonsFiltered: action.payload
