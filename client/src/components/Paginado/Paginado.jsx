@@ -19,8 +19,8 @@ const Paginado = ({pokemons}) => {
         pokemonspage=pokemons1;
         dispatch(paginado([...pokemonspage].splice(0, 12)))
     }
-  /*   console.log(pokemonspage)
-    if(pokemonspage.length===0){ 
+    /* console.log(pokemonspage) */
+/*     if(pokemonspage.length===0){ 
         console.log("entro")
         dispatch(getPokemons())
     }

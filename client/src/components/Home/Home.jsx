@@ -36,6 +36,7 @@ const Home = () => {
 
     const ordenar = (e) => {
         e.preventDefault();
+        console.log(e.target.value)
         if ((order !== e.target.value)) {
             setOrder(e.target.value);
             dispatch(sortPokemons(e.target.value))

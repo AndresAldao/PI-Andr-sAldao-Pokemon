@@ -152,9 +152,9 @@ const initialState = {
         return {
           ...state,
           pokemonsFiltered: pokemonsFilteredDB.concat(pokemonsFilterdAPI),
-          pokemonsaux: pokemonsFilterdAPI.concat(pokemonsFilteredDB),
+          pokemonsaux: pokemonsFilteredDB.concat(pokemonsFilterdAPI),
           aux: 0,
-          display: "There are no pokemons of this type"
+          display: "There are no pokemons of this type",
         }
       }
 
