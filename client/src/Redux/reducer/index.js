@@ -38,7 +38,7 @@ const initialState = {
         if(action.payload === "A-Z") {
           return {
             ...state,
-            pokemonsFiltered: state.pokemons.sort((a, b) => {
+            pokemonsFiltered: state.pokemonsaux.sort((a, b) => {
               if(a.name > b.name) {
                 return 1;
               }
@@ -48,7 +48,7 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons.sort((a, b) => {
+            pokemonsaux: state.pokemonsaux.sort((a, b) => {
               if(a.name > b.name) {
                 return 1;
               }
@@ -63,7 +63,7 @@ const initialState = {
           
           return {
             ...state,
-            pokemonsFiltered: state.pokemons.sort((a, b) => {
+            pokemonsFiltered: state.pokemonsaux.sort((a, b) => {
               if(a.name > b.name) {
                 return -1;
               }
@@ -73,7 +73,7 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons.sort((a, b) => {
+            pokemonsaux: state.pokemonsaux.sort((a, b) => {
               if(a.name > b.name) {
                 return -1;
               }
@@ -88,7 +88,7 @@ const initialState = {
           
           return {
             ...state,
-            pokemonsFiltered: state.pokemons.sort((a, b) => {
+            pokemonsFiltered: state.pokemonsaux.sort((a, b) => {
               if(a.attack > b.attack) {
                 return -1;
               }
@@ -98,7 +98,7 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons.sort((a, b) => {
+            pokemonsaux: state.pokemonsaux.sort((a, b) => {
               if(a.attack > b.attack) {
                 return -1;
               }
@@ -113,9 +113,10 @@ const initialState = {
         if(action.payload === "attacknegative") {
           console.log(state.pokemons, "pokemons")
           console.log(state.pokemonsaux, "pokemonsaux")
+          console.log(state.pokemonsFiltered, "pokemonsFiltered")
           return {
             ...state,
-            pokemonsFiltered: state.pokemons.sort((a, b) => {
+            pokemonsFiltered: state.pokemonsaux.sort((a, b) => {
               if(a.attack > b.attack) {
                 return 1;
               }
@@ -125,7 +126,7 @@ const initialState = {
               return 0;
             }),
             aux: 0,
-            pokemonsaux: state.pokemons.sort((a, b) => {
+            pokemonsaux: state.pokemonsaux.sort((a, b) => {
               if(a.attack > b.attack) {
                 return 1;
               }

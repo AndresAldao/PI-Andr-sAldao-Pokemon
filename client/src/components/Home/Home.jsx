@@ -25,7 +25,7 @@ const Home = () => {
     useEffect(() => {
         dispatch(getPokemons())
         dispatch(getTypes())
-        dispatch (paginado([...pokemons].splice(0, 12)));
+        /* dispatch (paginado([...pokemons].splice(0, 12))); */
     }, [dispatch]);
 
     const refrescar = (e) => {
@@ -41,7 +41,7 @@ const Home = () => {
         if ((order !== e.target.value)) {
             setOrder(e.target.value);
             dispatch(sortPokemons(e.target.value))
-            dispatch(paginado([...pokemons].slice(0, 12)));
+            /* dispatch(paginado([...pokemons].slice(0, 12))); */
             
         }
     }
