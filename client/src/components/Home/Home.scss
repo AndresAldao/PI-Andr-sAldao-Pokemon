@@ -1,10 +1,11 @@
 
 .principal{
-    background-image: url(https://wallpaperaccess.com/full/8094982.gif);
+    //https://wallpaperaccess.com/full/8094982.gif
+    background-image: url(https://rare-gallery.com/uploads/posts/534302-pokemon-pikachu.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh;
+    height: 120vh;
     width: 100vw;
     display: center;
     justify-content: center;
@@ -217,3 +218,33 @@
     }
     
 }
+
+.Display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: azure;
+    padding-top: 280px;
+}
+
+/* .Display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: all 1s ease;
+    &.active{
+        opacity: 1;
+        z-index: 10;
+    }
+} */

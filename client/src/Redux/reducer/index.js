@@ -111,7 +111,8 @@ const initialState = {
           }
         }
         if(action.payload === "attacknegative") {
-          
+          console.log(state.pokemons, "pokemons")
+          console.log(state.pokemonsaux, "pokemonsaux")
           return {
             ...state,
             pokemonsFiltered: state.pokemons.sort((a, b) => {
@@ -133,7 +134,9 @@ const initialState = {
               }
               return 0;
             })
+            
           }
+          
         }
 
       }
@@ -151,8 +154,8 @@ const initialState = {
         const pokemonsFilterdAPI = state.pokemons.filter(pokemon => pokemon.types.includes(action.payload))
         return {
           ...state,
-          pokemonsFiltered: pokemonsFilteredDB.concat(pokemonsFilterdAPI),
-          pokemonsaux: pokemonsFilteredDB.concat(pokemonsFilterdAPI),
+          pokemonsFiltered: pokemonsFilterdAPI.concat(pokemonsFilteredDB),
+          pokemonsaux: pokemonsFilterdAPI.concat(pokemonsFilteredDB),
           aux: 0,
           display: "There are no pokemons of this type",
         }

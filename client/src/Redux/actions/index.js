@@ -81,7 +81,6 @@ export const paginado = (payload) => {
 }
 
 export const getPokemonsByName = (name) => {
-    console.log(name)
     return async function(dispatch){
         try {
             const resPokemon = await axios.get(`http://localhost:3001/pokemons?name=${name}`);

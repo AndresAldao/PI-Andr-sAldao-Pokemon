@@ -7,6 +7,7 @@ import PokemonCard from "../PokemonCard/PokemonCard.js";
 import Paginado from "../Paginado/Paginado.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import "./Home.scss";
+import carga from "./cargar.svg";
 
 
 
@@ -15,10 +16,10 @@ const Home = () => {
     const dispatch = useDispatch();
     const [order, setOrder] = useState("asc");
     const [filter, setFilter] = useState("");
-    const display = useSelector(state => state.display);
+    let display = useSelector(state => state.display);
     const pokemonspage= useSelector(state => state.pokemonsFiltered);
 
-    
+
     const Types = useSelector(state => state.types);
     
     useEffect(() => {
@@ -113,7 +114,7 @@ const Home = () => {
                                     image={pokemon.image? pokemon.image : pokemon.img}
                                     types={pokemon.types} 
                                 />
-                                }): <h1>{display}</h1>
+                                }): <h1 className="Display">{(display==="Loading...")? <img src={carga} />: display}</h1>
                                 }
                         </div>
                 
