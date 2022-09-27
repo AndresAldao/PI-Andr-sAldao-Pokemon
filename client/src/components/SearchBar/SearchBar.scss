@@ -3,17 +3,19 @@
     top: 5%;
     right: 0.5%;
     /* transform: translate(-50%, -50%); */
-    background: #ff5400;
+    /* background: #ff5400; */
+    background: white;
     height: 30px;
     border-radius: 30px;
     padding: 10px;
     /* color: aliceblue; */
+    /* color: red; */
 }
 
 .search-box:hover > .search-txt{
     width: 140px;
     padding: 0 6px;
-    color: white;
+    color: red
 }
 
 .search-box:hover > .search-btn{

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPokemonsByName } from "../../Redux/actions";
 import "./SearchBar.scss";
-import {GoSearch} from "react-icons/go";
+
 
 const SearchBar = () => {
 
@@ -32,8 +32,8 @@ const SearchBar = () => {
                 />
                 
                 <button className="search-bnt" value={input} onClick={(e) => handleSubmit(e)}>
-                    STH
-                    {/* <GoSearch className="icon"/> */}</button>
+                    Hola
+                   </button>
             </div>
   );
 };
