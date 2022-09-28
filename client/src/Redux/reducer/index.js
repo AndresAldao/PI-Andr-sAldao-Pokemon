@@ -6,6 +6,7 @@ const initialState = {
     pokemonsFiltered: [],
     aux: 0,
     pokemonsaux:[],
+    pokemonsBD: [],
     display: "Loading..."
   };
   
@@ -29,6 +30,7 @@ const initialState = {
           pokemons: action.payload,
           pokemonsaux: action.payload,
           pokemonsFiltered: action.payload,
+          pokemonsBD: action.payload,
           aux: 0,
           display: "Loading..."
         }
@@ -150,9 +152,9 @@ const initialState = {
 
       if (action.type === "FILTER_BY_TYPE") {
         
-        const pokemonsFilteredDB = state.pokemons.filter(pokemon => pokemon.types.map(type => type.name).includes(action.payload))
+        const pokemonsFilteredDB = state.pokemonsBD.filter(pokemon => pokemon.types.map(type => type.name).includes(action.payload))
 
-        const pokemonsFilterdAPI = state.pokemons.filter(pokemon => pokemon.types.includes(action.payload))
+        const pokemonsFilterdAPI = state.pokemonsBD.filter(pokemon => pokemon.types.includes(action.payload))
         return {
           ...state,
           pokemonsFiltered: pokemonsFilterdAPI.concat(pokemonsFilteredDB),
@@ -196,6 +198,7 @@ const initialState = {
           pokemonsFiltered: pokemonsBD,
           aux: 0,
           pokemonsaux: pokemonsBD,
+          pokemonsBD: pokemonsBD,
           display: "Pokemons not Found. Please Refresh pokemon list and try again"
         }
       }
@@ -206,6 +209,7 @@ const initialState = {
           pokemonsFiltered: pokemonsAPI,
           aux: 0,
           pokemonsaux: pokemonsAPI,
+          pokemonsBD: pokemonsAPI,
           display: "Pokemons not Found. Please Refresh pokemon list and try again"
         }
       }

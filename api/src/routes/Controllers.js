@@ -48,7 +48,7 @@ const getPokemonsDB = async function(pokemonName){
 
 const getPokemonsapi = async function(pokemonName){
     if(pokemonName === undefined){
-        const allpokemon = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=41');
+        const allpokemon = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=80');
         const allUrl = allpokemon.data.results.map(pokemon => pokemon.url);
         promises = await Promise.all(allUrl.map(url => axios.get(url))); 
         const pokemons = promises.map(pokemon => {

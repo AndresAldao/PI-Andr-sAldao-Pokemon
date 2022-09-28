@@ -49,3 +49,15 @@ router.post('/pokemons', async function(req, res){
         res.status(404).send(error);
     }
 });
+
+
+router.delete('/pokemons/:idpokemon', async function(req, res){
+    const { idpokemon } = req.params;
+    try{
+        const pokemon = await Pokemon.findByPk(idpokemon);
+        await pokemon.destroy();
+        res.status(200).send('Pokemon deleted');
+    }catch(error){
+        res.status(404).send(error);
+    }
+});
