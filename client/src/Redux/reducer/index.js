@@ -193,7 +193,6 @@ const initialState = {
        
         return {
           ...state,
-          pokemons: pokemonsBD,
           pokemonsFiltered: pokemonsBD,
           aux: 0,
           pokemonsaux: pokemonsBD,
@@ -202,10 +201,8 @@ const initialState = {
       }
       if(action.type==="FILTER_BY_TYPE_API") {
         const pokemonsAPI = state.pokemons.filter(pokemon => pokemon.image? pokemon : null)
-        
         return {
           ...state,
-          pokemons: pokemonsAPI,
           pokemonsFiltered: pokemonsAPI,
           aux: 0,
           pokemonsaux: pokemonsAPI,
