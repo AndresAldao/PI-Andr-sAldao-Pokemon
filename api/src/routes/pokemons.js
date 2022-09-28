@@ -51,7 +51,7 @@ router.post('/pokemons', async function(req, res){
 });
 
 
-router.delete('/pokemons/:idpokemon', async function(req, res){
+/* router.delete('/pokemons/:idpokemon', async function(req, res){
     const { idpokemon } = req.params;
     try{
         const pokemon = await Pokemon.findByPk(idpokemon);
@@ -60,4 +60,4 @@ router.delete('/pokemons/:idpokemon', async function(req, res){
     }catch(error){
         res.status(404).send(error);
     }
-});
+}); */

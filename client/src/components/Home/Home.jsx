@@ -18,14 +18,14 @@ const Home = () => {
     const [filter, setFilter] = useState("");
     let display = useSelector(state => state.display);
     const pokemonspage= useSelector(state => state.pokemonsFiltered);
-
+    const [remove, setRemove] = useState("");
+    const [removetype, setRemovetype] = useState("");
 
     const Types = useSelector(state => state.types);
     
     useEffect(() => {
         dispatch(getPokemons())
         dispatch(getTypes())
-        /* dispatch (paginado([...pokemons].splice(0, 12))); */
     }, [dispatch]);
 
     const refrescar = (e) => {
@@ -33,16 +33,16 @@ const Home = () => {
         setOrder(e);
         dispatch(paginado([...pokemons].splice(0, 12)));
         dispatch(Refresh(e));
+        remove.selected = true;
+        removetype.selected = true;
     };
 
     const ordenar = (e) => {
         e.preventDefault();
-        console.log(e.target.value)
+        setRemove(e.target[0]);
         if ((order !== e.target.value)) {
             setOrder(e.target.value);
             dispatch(sortPokemons(e.target.value))
-            /* dispatch(paginado([...pokemons].slice(0, 12))); */
-            
         }
     }
 
@@ -52,20 +52,20 @@ const Home = () => {
         dispatch(filterPokemonsDB(e.target.value))
     }
 
-    
-
     const PokemonsApi = (e) => {
         getPokemons()
         e.preventDefault();
         dispatch(filterPokemonsAPI(e.target.value))
-        /* dispatch(paginado(pokemons.splice(0, 12))) */
     }
     
     const handleSelect = (e) => {
         setFilter(e.target.value);
-
         dispatch(filterPokemons(e.target.value));
+        setRemovetype(e.target[0]);
     };
+
+
+
     useEffect(() => {
     }, [order]);
 
@@ -80,6 +80,7 @@ const Home = () => {
                 </div>
                 <div>
                     <SearchBar />
+                
                     <button className="button1 button1--1" onClick={PokemonsBD}>
                         Pokemons BD
                     </button>
@@ -90,7 +91,7 @@ const Home = () => {
                         Refresh Pokemons list
                     </button>
                     <select className="select-menu" onChange={ordenar}>
-                        <option className="select-menu-inner">Sort By</option>
+                        <option disabled selected className="select-menu-inner">Sort By</option>
                         <option className="select-menu-inner" value="A-Z">A-Z</option>
                         <option className="select-menu-inner" value="Z-A">Z-A</option>
                         <option className="select-menu-inner" value="attackpositive">Attack ↑</option>
@@ -114,7 +115,7 @@ const Home = () => {
                                     image={pokemon.image? pokemon.image : pokemon.img}
                                     types={pokemon.types} 
                                 />
-                                }): <h1 className="Display">{(display==="Loading...")? <img src={carga} />: display}</h1>
+                                }): <h1 className="Display">{(display==="Loading...")? <img src={carga} alt="Carga" />: display}</h1>
                                 }
                         </div>
                 

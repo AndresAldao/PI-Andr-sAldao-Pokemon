@@ -113,9 +113,6 @@ const initialState = {
           }
         }
         if(action.payload === "attacknegative") {
-          console.log(state.pokemons, "pokemons")
-          console.log(state.pokemonsaux, "pokemonsaux")
-          console.log(state.pokemonsFiltered, "pokemonsFiltered")
           return {
             ...state,
             pokemonsFiltered: state.pokemonsaux.sort((a, b) => {
@@ -221,6 +218,7 @@ const initialState = {
           aux: action.payload
         }
       }
+  
 
       return state;
     }

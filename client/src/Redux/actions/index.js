@@ -43,7 +43,6 @@ export const getPokemons = () => {
 }
 
 export const sortPokemons = (payload) => {
-    /* console.log(payload , "action"); */
     return {
         type: "SORT_POKEMONS",
         payload
@@ -73,7 +72,6 @@ export const filterPokemons = (payload) => {
 }
 
 export const paginado = (payload) => {
-    /* console.log(payload) */
     return {
         type: "PAGINADO",
         payload: payload
@@ -93,7 +91,6 @@ export const getPokemonsByName = (name) => {
             return dispatch({
                 type: "GET_POKEMON_BY_NAME",
                 payload: [],
-                /* console.log(error); */
             })
         }
     }
@@ -125,3 +122,4 @@ export const CurrentPage = (payload) => {
         payload: payload
     }
 }
+
