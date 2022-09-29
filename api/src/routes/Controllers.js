@@ -79,18 +79,6 @@ const getPokemonsapi = async function(pokemonName){
     }
 }
 
-    /* axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`); */
-/*     if (poke.status === 200){
-        const pokemon = {
-            name: poke.data.name,
-            image: poke.data.sprites.other.dream_world.front_default,
-            types: poke.data.types.map(t => t.type.name),
-        }
-        console.log(pokemon);
-        return pokemon;
-    }
-    return null;
-} */
 
 const getPokemonsByID = async function(id){
     try {
@@ -116,6 +104,7 @@ const getPokemonsByID = async function(id){
         return null;
     }  
 }
+
 
 const getPokemonsDBbyID = async function(id){
     if(id !== null){
@@ -161,14 +150,10 @@ module.exports = {
     },
     getPokemonsByID: async function(id){
         const pokemonapi = await getPokemonsByID(id);
-        /* console.log(pokemonapi,'pokemonapi'); */
         if (pokemonapi!== null){
             return pokemonapi;
         }
-       /*  console.log("estoy"); */
         const pokemonDB = await getPokemonsDBbyID(id);
-       /*  console.log("estoy2");
-        console.log(pokemonDB,'pokemonDB'); */
         if(pokemonDB !== null){
             return pokemonDB;
         }

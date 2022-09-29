@@ -35,7 +35,7 @@ const Paginado = ({pokemons}) => {
         const firstpage = nextPage * 12;
         
         
-        if (firstpage > total) {
+        if (firstpage >= total) {
             return;
         }
     
@@ -49,7 +49,7 @@ const Paginado = ({pokemons}) => {
         const prevPage = current - 1;
         const firstpage = prevPage * 12;
 
-        if (firstpage < 0) {
+        if (firstpage <= 0) {
             return;
         }
         

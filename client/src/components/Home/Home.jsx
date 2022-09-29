@@ -33,8 +33,12 @@ const Home = () => {
         setOrder(e);
         dispatch(paginado([...pokemons].splice(0, 12)));
         dispatch(Refresh(e));
-        remove.selected = true;
-        removetype.selected = true;
+        if(remove !== ""){
+            remove.selected = true;
+        }
+        if(removetype !== ""){
+            removetype.selected = true;
+        }
     };
 
     const ordenar = (e) => {

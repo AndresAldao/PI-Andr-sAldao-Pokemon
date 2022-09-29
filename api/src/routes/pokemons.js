@@ -25,6 +25,7 @@ router.get('/pokemons/:idpokemon', async function(req, res){
     }
 });
 
+
 router.post('/pokemons', async function(req, res){
     const { name, hp, attack, defense, speed, height, weight, img, types } = req.body;
     try{
