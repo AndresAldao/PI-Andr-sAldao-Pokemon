@@ -52,6 +52,9 @@ router.post('/pokemons', async function(req, res){
 });
 
 
+
+
+
 /* router.delete('/pokemons/:idpokemon', async function(req, res){
     const { idpokemon } = req.params;
     try{

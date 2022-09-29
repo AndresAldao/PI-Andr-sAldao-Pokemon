@@ -14,17 +14,14 @@ const Paginado = ({pokemons}) => {
     const [items, setItems] = useState(pokemons1.length?[...pokemons1].slice(0, 12):[...pokemonspage].slice(0, 12));
     const [currentPage, setCurrentPage] = useState(0);
     let current = useSelector (state => state.aux);
+
+    console.log(current)
     
     if(pokemons1.length>12){
         pokemonspage=pokemons1;
         dispatch(paginado([...pokemonspage].splice(0, 12)))
     }
-    console.log(pokemonspage, "pokemonspage")
-/*     if(pokemonspage.length===0){ 
-        console.log("entro")
-        dispatch(getPokemons())
-    }
- */
+
     useEffect(() => {
         dispatch(paginado(items))
     }, [dispatch, items, currentPage]);
@@ -49,7 +46,7 @@ const Paginado = ({pokemons}) => {
         const prevPage = current - 1;
         const firstpage = prevPage * 12;
 
-        if (firstpage <= 0) {
+        if (firstpage < 0) {
             return;
         }
         
@@ -63,7 +60,8 @@ const Paginado = ({pokemons}) => {
         <div>
             <button className='btn1 btn1--1' onClick={prevPage}>Prev Page</button>
             <button className='btn2 btn2--2' onClick={nextPage}>Next Page</button>
-        </div>
+            <h1 className='btn3'> PAGE {current+1}</h1>  
+        </div>             
     )
 }
 

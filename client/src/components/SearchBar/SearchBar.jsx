@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPokemonsByName } from "../../Redux/actions";
 import "./SearchBar.scss";
+//import lupa from "./lupa.svg";
 
 
 const SearchBar = () => {
@@ -32,8 +33,9 @@ const SearchBar = () => {
                 />
                 
                 <button className="search-bnt" value={input} onClick={(e) => handleSubmit(e)}>
-                    Hola
-                   </button>
+                   {/*  <img className="iconlupa" src={lupa} alt="lupa"/> */}
+                   Pok
+                </button>
             </div>
   );
 };
